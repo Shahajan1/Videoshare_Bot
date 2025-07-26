@@ -22,6 +22,6 @@ services:
       - key: BOT_USERNAME
         value: LinkVidBot_bot
       - key: CHANNEL_ID
-        value: @Movies_bot21
+        value: @Movies_boot
       - key: CHANNEL_INVITE_LINK
-        value: https://t.me/Movies_bot21
+        value: https://t.me/Movies_boot
