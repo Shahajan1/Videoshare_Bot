@@ -1,0 +1,61 @@
+LinkVidBot - Telegram Video Sharing Bot
+LinkVidBot is a Telegram bot that allows admins to upload videos and generate unique, shareable links. 
+Users can access these videos only after joining a specific Telegram channel. 
+This is useful for content creators, private communities, or promotional campaigns.
+
+Features
+✅ Upload a video and receive a unique access link.
+
+✅ Users must join your channel to view the video.
+
+✅ Videos are stored securely using a SQLite database.
+
+✅ Automatic channel membership verification.
+
+✅ Inline buttons for channel join confirmation.
+
+ How It Works
+
+👤 Admin Workflow
+Send a video to the bot.
+
+The bot returns a unique URL.
+
+ User Workflow
+
+Clicks the unique link.
+
+If not subscribed, they are prompted to join the channel.
+
+After joining and confirming, the video is sent to them.
+
+ Example
+
+Admin uploads a video:
+
+Receives: https://t.me/LinkVidBot_bot?start=Yz3aK9
+
+User opens link:
+
+Prompted to join @Movies_bot21
+
+After joining, receives the video
+
+ Example
+Admin uploads a video:
+
+Receives: https://t.me/LinkVidBot_bot?start=Yz3aK9
+
+User opens link:
+
+Prompted to join @Movies_bot21
+
+After joining, receives the video
+
+License
+
+This project is open-source and free to use. Feel free to modify and improve it!
+
+🙌 Credits
+
+Built with 💙 using python-telegram-bot
