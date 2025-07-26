@@ -17,7 +17,7 @@ from telegram.ext import (
 )
 from telegram.error import BadRequest
 
-# === Debug Info ===
+# === Print version info for Render log ===
 print(f"🐍 Python version: {sys.version}")
 print(f"📦 python-telegram-bot version: {telegram.__version__}")
 
@@ -27,18 +27,19 @@ logging.basicConfig(
     level=logging.INFO
 )
 
-# === Load Env Vars ===
+# === Load .env (local only) ===
 load_dotenv()
+
 BOT_TOKEN = os.getenv("BOT_TOKEN")
 BOT_USERNAME = os.getenv("BOT_USERNAME")
 CHANNEL_ID = os.getenv("CHANNEL_ID")
 CHANNEL_INVITE_LINK = os.getenv("CHANNEL_INVITE_LINK")
 
 if not all([BOT_TOKEN, BOT_USERNAME, CHANNEL_ID, CHANNEL_INVITE_LINK]):
-    raise ValueError("❌ Missing environment variables!")
+    raise ValueError("❌ One or more environment variables are missing.")
 
-# === SQLite Setup ===
-conn = sqlite3.connect('database.db', check_same_thread=False)
+# === SQLite setup ===
+conn = sqlite3.connect("database.db", check_same_thread=False)
 cursor = conn.cursor()
 cursor.execute("CREATE TABLE IF NOT EXISTS videos (code TEXT PRIMARY KEY, file_id TEXT)")
 
@@ -114,7 +115,7 @@ async def handle_text(update: Update, context: ContextTypes.DEFAULT_TYPE):
 
     await update.message.reply_video(data[0])
 
-# === Launcher ===
+# === Bot Startup ===
 def main():
     try:
         app = Application.builder().token(BOT_TOKEN).build()

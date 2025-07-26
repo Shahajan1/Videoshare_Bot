@@ -3,9 +3,16 @@ services:
     name: telegram-bot
     env: python
     runtime: python
-    buildCommand: ""  # Forces use of runtime.txt
+    buildCommand: |
+      curl https://pyenv.run | bash
+      export PATH="$HOME/.pyenv/bin:$PATH"
+      eval "$(pyenv init -)"
+      eval "$(pyenv virtualenv-init -)"
+      pyenv install 3.11.9
+      pyenv global 3.11.9
+      python -m pip install --upgrade pip
+      python -m pip install -r requirements.txt
     startCommand: python main.py
-    pythonVersion: 3.11.9
     plan: free
     autoDeploy: true
     envVars:
